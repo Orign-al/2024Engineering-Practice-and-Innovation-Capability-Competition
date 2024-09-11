@@ -38,6 +38,7 @@
 .\objects\timer.o: ..\SYSTEM\Delay.h
 .\objects\timer.o: ..\Hardware\OLED.h
 .\objects\timer.o: ..\SYSTEM\pack_one.h
+.\objects\timer.o: ..\SYSTEM\action.h
 .\objects\timer.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\timer.o: ..\Hardware\m2006driver.h
 .\objects\timer.o: ..\Hardware\Motor.h

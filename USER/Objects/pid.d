@@ -40,6 +40,7 @@
 .\objects\pid.o: ..\SYSTEM\Delay.h
 .\objects\pid.o: ..\Hardware\OLED.h
 .\objects\pid.o: ..\SYSTEM\pack_one.h
+.\objects\pid.o: ..\SYSTEM\action.h
 .\objects\pid.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\pid.o: ..\Hardware\m2006driver.h
 .\objects\pid.o: ..\Hardware\Motor.h

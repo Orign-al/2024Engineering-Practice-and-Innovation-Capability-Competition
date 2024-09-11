@@ -3,6 +3,7 @@
         "math.h": "c",
         "string": "c",
         "array": "c",
-        "string_view": "c"
+        "string_view": "c",
+        "pack_one.h": "c"
     }
 }

@@ -38,6 +38,7 @@
 .\objects\encoder.o: ..\SYSTEM\Delay.h
 .\objects\encoder.o: ..\Hardware\OLED.h
 .\objects\encoder.o: ..\SYSTEM\pack_one.h
+.\objects\encoder.o: ..\SYSTEM\action.h
 .\objects\encoder.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\encoder.o: ..\Hardware\m2006driver.h
 .\objects\encoder.o: ..\Hardware\Motor.h

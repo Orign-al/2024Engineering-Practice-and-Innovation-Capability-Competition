@@ -253,7 +253,7 @@ void UpdateOLEDDisplay(void) {
     OLED_ShowNumber(0, 2, x_pi);
     OLED_ShowNumber(24, 2,y_pi);
     
-    OLED_ShowNumber(0, 6, motors[0].revolutions);
+    OLED_ShowNumber(0, 6, pi_put_obj_fir);
     OLED_ShowNumber(24, 6, pi_put_obj_sec);
 
     // OLED_ShowNumber(0, 6, flag_arr_speed_4);
@@ -278,8 +278,8 @@ void TIM6_DAC_IRQHandler(void) {
     if (TIM_GetITStatus(TIM6, TIM_IT_Update) != RESET) {
         TIM_ClearITPendingBit(TIM6, TIM_IT_Update);
         system_ticks++;
-        // ProcessReceivedData();
-        // pi_data_process(rx_buffer ,&x_pi ,&y_pi, &pi_put_obj_fir , &pi_put_obj_sec);
+        ProcessReceivedData();
+        pi_data_process(rx_buffer ,&x_pi ,&y_pi, &pi_put_obj_fir , &pi_put_obj_sec);
 
         
         if (system_ticks % 500 == 0) {
@@ -372,12 +372,14 @@ int main(void) {
 
     USART4_Init(115200);     // 初始化USART4用于HWT101传感器通信
     USART5_Init();
-
+    //行走、初始姿态
+	Initial_Position(); 
     while (1) {
 
         if (update_display) {
             UpdateOLEDDisplay();
             update_display = 0;
+            
         }
 
 
@@ -403,15 +405,15 @@ int main(void) {
         set_target_position(-80, 20, 0, 0);
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         // int i = 1 ;
-        // while ( pi_put_obj_fir != 999 && pi_put_obj_sec != 999){
-        //     int slowly_move_i = -20;
-        //     position_x = -80 + slowly_move_i *i;
+        while ( pi_put_obj_fir != 999 && pi_put_obj_sec != 999){
+            // int slowly_move_i = -20;
+            // position_x = -80 + slowly_move_i *i;
 
 
-        //     set_target_position(position_x, 35, 0, 0);
-        //     i++;
+            // set_target_position(position_x, 35, 0, 0);
 
-        // }
+
+        }
 
         delay_ms(3000);
 
