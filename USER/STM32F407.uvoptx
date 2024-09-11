@@ -166,45 +166,15 @@
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>flag_arr_speed_1</ItemText>
+          <ItemText>pi_put_obj_fir</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
           <WinNumber>1</WinNumber>
-          <ItemText>flag_arr_speed_2</ItemText>
+          <ItemText>pi_put_obj_sec</ItemText>
         </Ww>
         <Ww>
           <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>flag_arr_speed_3</ItemText>
-        </Ww>
-        <Ww>
-          <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>flag_arr_speed_4</ItemText>
-        </Ww>
-        <Ww>
-          <count>6</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>stcAngle.Angle[0]</ItemText>
-        </Ww>
-        <Ww>
-          <count>7</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>stcAngle.Angle[1]</ItemText>
-        </Ww>
-        <Ww>
-          <count>8</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>stcAngle.Angle[2]</ItemText>
-        </Ww>
-        <Ww>
-          <count>9</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>rx_buffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>10</count>
           <WinNumber>1</WinNumber>
           <ItemText>rx_buffer</ItemText>
         </Ww>
@@ -212,26 +182,6 @@
       <WatchWindow2>
         <Ww>
           <count>0</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>motors[0].revolutions</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>motors[1].revolutions</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>motors[2].revolutions</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>2</WinNumber>
-          <ItemText>motors[3].revolutions</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
           <WinNumber>2</WinNumber>
           <ItemText>ucData</ItemText>
         </Ww>
@@ -242,7 +192,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>1</aLwin>
+        <aLwin>0</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
