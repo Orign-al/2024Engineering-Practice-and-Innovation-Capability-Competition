@@ -390,8 +390,19 @@ int main(void) {
     // char test_message[] = "Hello, UART5!\n";
     USART4_Init(115200);     // 初始化USART4用于HWT101传感器通信
     USART5_Init();
+
+    // 机械臂模块
+    NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//使用了中断，则这一句必须要有	  
+	USART2_IO_Conf();//配置串口的IO	  
+	USART2_Conf(115200);//串口配置成波特率115200
+	//Usart_SendString(USART1,(uint8_t *)data,5);//发送字符串
+	delay_init(168);
+    delay_ms(1000);	
     //行走、初始姿态
-	// Initial_Position(); 
+	 Initial_Position();        //初始动作 以及 行走动作
+     delay_ms(500);
+    Preparation_to_pack();      //  准备抓取动作
+
     while (1) {
 
         if (update_display) {

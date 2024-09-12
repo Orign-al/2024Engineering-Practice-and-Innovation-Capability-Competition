@@ -6,7 +6,7 @@
 uint8_t ZQ_data[13] = {0xFF, 0xFF, 0x00, 0x09, 0x03, 0x2A, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 
-void move_robot_arm_speed (uint8_t ID,uint16_t pos , uint16_t speed){
+void move_robot_arm_speed (uint8_t ID,uint16_t pos , uint16_t speed){ 
   ZQ_data[2] = ID;
   uint8_t temp_low;
   uint8_t temp_low1;
@@ -77,7 +77,7 @@ void Initial_Position() {     //初始姿势以及行走姿势
   
 }
 
-void Preparation_to_pack(){   	//从初始姿势（行走姿势）转为要抓取的时候，在中间用
+void Preparation_to_pack(){   	//每次任务完成后的过渡状态，防止碰撞
 
 //	 // 执行动作3：移动到位置 2000，速度 800
    move_robot_arm_speed(3, 1590, 1000);
@@ -93,7 +93,7 @@ void Preparation_to_pack(){   	//从初始姿势（行走姿势）转为要抓�
   move_robot_arm_speed(6, 2039, 1000);
 }
 
-void watch_Initial_Position() {     //视觉观察的位置
+void watch_Initial_Position() {     //机械臂前伸，视觉
 	//    // 执行动作2：移动到位置 2000，速度 800
    move_robot_arm_speed(4,1381, 1000);
 //    // 延时

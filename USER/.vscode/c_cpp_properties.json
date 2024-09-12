@@ -3,15 +3,13 @@
         {
             "name": "STM32F407",
             "includePath": [
-                "d:\\Code\\STM32\\程序\\标准库\\工创赛-m2006\\CORE",
-                "d:\\Code\\STM32\\程序\\标准库\\工创赛-m2006\\USER",
-                "d:\\Code\\STM32\\程序\\标准库\\工创赛-m2006\\FWLIB\\inc",
-                "d:\\Code\\STM32\\程序\\标准库\\工创赛-m2006\\Hardware",
-                "d:\\Code\\STM32\\程序\\标准库\\工创赛-m2006\\SYSTEM",
-                "d:\\Code\\STM32\\程序\\标准库\\工创赛-m2006\\OBJ",
-                "E:\\Keil_v5\\ARM\\ARMCC\\include",
-                "E:\\Keil_v5\\ARM\\ARMCC\\include\\rw",
-                "d:\\Code\\STM32\\程序\\标准库\\工创赛-m2006\\FWLIB\\src"
+                "d:\\GITHUB\\2024Engineering-Practice-and-Innovation-Capability-Competition\\CORE",
+                "d:\\GITHUB\\2024Engineering-Practice-and-Innovation-Capability-Competition\\USER",
+                "d:\\GITHUB\\2024Engineering-Practice-and-Innovation-Capability-Competition\\FWLIB\\inc",
+                "d:\\GITHUB\\2024Engineering-Practice-and-Innovation-Capability-Competition\\Hardware",
+                "d:\\GITHUB\\2024Engineering-Practice-and-Innovation-Capability-Competition\\SYSTEM",
+                "d:\\GITHUB\\2024Engineering-Practice-and-Innovation-Capability-Competition\\OBJ",
+                "d:\\GITHUB\\2024Engineering-Practice-and-Innovation-Capability-Competition\\FWLIB\\src"
             ],
             "defines": [
                 "STM32F40_41xxx",

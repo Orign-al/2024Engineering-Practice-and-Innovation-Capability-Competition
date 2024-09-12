@@ -2,7 +2,7 @@
 #include "PACK_ONE.h"   
 #include "delay.h"
 
-void ACTION_GROUND_red(){
+void ACTION_GROUND_red(){    //抓取地面上的红色
 
 	watch_Initial_Position(); //视觉的初始位置
 	pack_red_1();   //抓取前
@@ -12,7 +12,7 @@ void ACTION_GROUND_red(){
 	Preparation_to_pack();
 }
 
-void ACTION_GROUND_blue(){
+void ACTION_GROUND_blue(){		//抓取地面上的蓝色
 
 	watch_Initial_Position(); //视觉的初始位置
 	pack_blue_1();   //抓取前
@@ -22,7 +22,7 @@ void ACTION_GROUND_blue(){
 	Preparation_to_pack();
 }
 
-void ACTION_GROUND_green(){
+void ACTION_GROUND_green(){			//抓取地面上的绿色
 
 	watch_Initial_Position(); //视觉的初始位置
 	pack_green_1();   //抓取前
@@ -32,7 +32,7 @@ void ACTION_GROUND_green(){
 	Preparation_to_pack();
 }
 
-void ACTION_PLATFORM_green(){
+void ACTION_PLATFORM_green(){       //抓取平台上的绿色
 
 	Preparation_to_pack();
 	delay_ms(1000);
@@ -41,7 +41,7 @@ void ACTION_PLATFORM_green(){
 	delay_ms(2000);
 }
 
-void ACTION_PLATFORM_red(){
+void ACTION_PLATFORM_red(){			//抓取平台上的红色
 
 	Preparation_to_pack();
 	delay_ms(1000);
@@ -50,7 +50,7 @@ void ACTION_PLATFORM_red(){
 	delay_ms(2000);
 }
 
-void ACTION_PLATFORM_blue(){
+void ACTION_PLATFORM_blue(){			//抓取平台上的蓝色（衔接下一个动作的准备动作，移出机械臂）
 
 	Preparation_to_pack();
 	delay_ms(1000);
