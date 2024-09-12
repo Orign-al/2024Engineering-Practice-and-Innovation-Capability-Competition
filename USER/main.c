@@ -26,7 +26,7 @@ PIDController speed_pid_controllers[MOTOR_COUNT];
 PIDController current_pid_controllers[MOTOR_COUNT];
 
 
-#define BUFFER_SIZE 256  // 接收缓冲区大小
+#define BUFFER_SIZE 512  // 接收缓冲区大小
 
 #define UART_BUFFER_SIZE 256  //祝秋
 
@@ -179,12 +179,26 @@ void UART4_IRQHandler(void) {
     USART_ClearITPendingBit(UART4, USART_IT_ORE);
 }
 
+void ClearRxBuffer(void) {
+    memset(rx_buffer, 0, BUFFER_SIZE);  // 清空缓冲区
+    rx_index = 0;                       // 重置索引
+    rx_complete = 0;                    // 重置接收完成标志
+}
+
+
 void UART5_IRQHandler(void) {
     if (USART_GetITStatus(UART5, USART_IT_RXNE) != RESET) {
         uint8_t received_byte = USART_ReceiveData(UART5);
 
+        if (received_byte == '\r') {
+            USART_ClearITPendingBit(UART5, USART_IT_RXNE);  // 清除中断标志位
+            return;
+        }
+
         if (rx_index < BUFFER_SIZE - 1) {
             rx_buffer[rx_index++] = received_byte;
+            
+
 
         }
 
@@ -192,7 +206,9 @@ void UART5_IRQHandler(void) {
         if (received_byte == '\n' || rx_index >= BUFFER_SIZE - 1) {
             rx_buffer[rx_index] = '\0';  // 添加字符串终止符
             rx_complete = 1;             // 设置接收完成标志
-            rx_index = 0;                // 重置索引
+
+            // // 清空缓冲区
+            // ClearRxBuffer();
         }
 
 
@@ -264,11 +280,13 @@ void UpdateOLEDDisplay(void) {
 void pi_data_process(char *rx_buffer ,int *x ,int *y, int *put_obj_fir , int *put_obj_sec) {
     int strlenmax;
     strlenmax = strlen(rx_buffer);
-    if(rx_buffer[0] == 'A' && rx_buffer[1] == '0' && rx_buffer[strlenmax-2] == '0' && rx_buffer[strlenmax -1] == 'A' ){
-        sscanf(rx_buffer, "A0 x %d y %d 0A", x, y);        
+    if(rx_buffer[0] == 'A' && rx_buffer[1] == 'Z' && rx_buffer[strlenmax-2] == 'Z' && rx_buffer[strlenmax -1] == 'A' ){
+        sscanf(rx_buffer, "AZx%dy%dZA", x, y); 
+        // ClearRxBuffer();       
     }
-    if(rx_buffer[0] == 'B' && rx_buffer[1] == '0' && rx_buffer[strlenmax-2] == '0' && rx_buffer[strlenmax -1] == 'B' ){
-        sscanf(rx_buffer, "B0 %d - %d 0B", put_obj_fir, put_obj_sec);        
+    if(rx_buffer[0] == 'B' && rx_buffer[1] == 'Z' && rx_buffer[strlenmax-2] == 'Z' && rx_buffer[strlenmax -1] == 'B' ){
+        sscanf(rx_buffer, "BZ%d+%dZB", put_obj_fir, put_obj_sec);
+        // ClearRxBuffer();        
     }
 
 }
@@ -369,11 +387,11 @@ int main(void) {
     CAN_ITConfig(CAN1, CAN_IT_FMP0, ENABLE); // 使能CAN1中断
     NVIC_EnableIRQ(CAN1_RX0_IRQn); // 使能CAN1接收中断
     sign_move = 0;
-
+    // char test_message[] = "Hello, UART5!\n";
     USART4_Init(115200);     // 初始化USART4用于HWT101传感器通信
     USART5_Init();
     //行走、初始姿态
-	Initial_Position(); 
+	// Initial_Position(); 
     while (1) {
 
         if (update_display) {
@@ -384,7 +402,7 @@ int main(void) {
 
 
         // 发送一些测试数据
-        // char test_message[] = "Hello, UART5!\n";
+
         // UART5_Transmit((uint8_t *)test_message, strlen(test_message));
 
     
@@ -405,15 +423,19 @@ int main(void) {
         set_target_position(-80, 20, 0, 0);
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         // int i = 1 ;
-        while ( pi_put_obj_fir != 999 && pi_put_obj_sec != 999){
-            // int slowly_move_i = -20;
-            // position_x = -80 + slowly_move_i *i;
 
 
-            // set_target_position(position_x, 35, 0, 0);
+        while(1){
 
-
+            if (pi_put_obj_fir != 999 && pi_put_obj_sec != 999)
+            {
+                break;
+            }
+            
         }
+
+
+        
 
         delay_ms(3000);
 
