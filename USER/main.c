@@ -436,14 +436,14 @@ int main(void) {
         // int i = 1 ;
 
 
-        while(1){
+       // while(1){
 
-            if (pi_put_obj_fir != 999 && pi_put_obj_sec != 999)
-            {
-                break;
-            }
+       //     if (pi_put_obj_fir != 999 && pi_put_obj_sec != 999)
+       //     {
+       //         break;
+       //     }
             
-        }
+      //  }
 
 
         
@@ -459,7 +459,10 @@ int main(void) {
         InitPIDControllers();        // 初始化PID控制器
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(300);
-
+        watch_Initial_Position();   //视觉动作抬伸
+		ACTION_PLATFORM_green();
+		ACTION_PLATFORM_red();
+		ACTION_PLATFORM_blue();
 
         delay_ms(1000);
         set_target_position(-90, 20, 0, 0);
