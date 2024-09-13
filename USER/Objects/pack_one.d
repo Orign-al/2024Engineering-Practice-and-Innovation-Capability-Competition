@@ -1,7 +1,7 @@
 .\objects\pack_one.o: ..\SYSTEM\pack_one.c
 .\objects\pack_one.o: ..\USER\stm32f4xx.h
 .\objects\pack_one.o: ..\CORE\core_cm4.h
-.\objects\pack_one.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\pack_one.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\pack_one.o: ..\CORE\core_cmInstr.h
 .\objects\pack_one.o: ..\CORE\core_cmFunc.h
 .\objects\pack_one.o: ..\CORE\core_cm4_simd.h

@@ -1,7 +1,7 @@
 .\objects\action.o: ..\SYSTEM\ACTION.c
 .\objects\action.o: ..\USER\stm32f4xx.h
 .\objects\action.o: ..\CORE\core_cm4.h
-.\objects\action.o: D:\Keil5\ARM\ARMCC\Bin\..\include\stdint.h
+.\objects\action.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\action.o: ..\CORE\core_cmInstr.h
 .\objects\action.o: ..\CORE\core_cmFunc.h
 .\objects\action.o: ..\CORE\core_cm4_simd.h

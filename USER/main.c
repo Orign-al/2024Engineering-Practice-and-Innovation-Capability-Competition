@@ -121,10 +121,10 @@ void InitPIDControllers(void) {
     PID_Init(&angle_pid_controllers, 3.0f,4.0f, 0.001f, 360.0f);  // 角度环参数
 
     // 初始化位置环PID控制器
-    PID_Init(&position_pid_controllers[0], 30.0f, 1.9f, 0.0f, 1000.0f);
-    PID_Init(&position_pid_controllers[1], 30.0f, 1.7f, 0.0f, 1000.0f);
-    PID_Init(&position_pid_controllers[2], 30.0f, 1.7f, 0.0f, 1000.0f);
-    PID_Init(&position_pid_controllers[3], 30.0f, 1.9f, 0.0f, 1000.0f);
+    PID_Init(&position_pid_controllers[0], 34.0f, 2.5f, 0.0f, 1000.0f);
+    PID_Init(&position_pid_controllers[1], 34.0f, 2.3f, 0.0f, 1000.0f);
+    PID_Init(&position_pid_controllers[2], 34.0f, 2.3f, 0.0f, 1000.0f);
+    PID_Init(&position_pid_controllers[3], 34.0f, 2.3f, 0.0f, 1000.0f);
 
     // 初始化速度环PID控制器
     PID_Init(&speed_pid_controllers[0], 1.8f, 2.5f, 0.012f, 100.0f);
@@ -451,7 +451,7 @@ int main(void) {
         delay_ms(3000);
 
         target_yaw = 47;
-        set_target_position(-185, 20, 0, 0);
+        set_target_position(-185, 30, 0, 0);
         right = 1;
         left = 0;
         up = 0;
@@ -464,8 +464,10 @@ int main(void) {
 		ACTION_PLATFORM_red();
 		ACTION_PLATFORM_blue();
 
+        
+        target_yaw = 45;
         delay_ms(1000);
-        set_target_position(-90, 20, 0, 0);
+        set_target_position(-80, 20, 0, 0);
         right = 0;
         left = 0;
         up = 1;
@@ -474,7 +476,7 @@ int main(void) {
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(1000);
 
-        set_target_position(-100, 150, 0, 0);
+        set_target_position(-90, 150, 0, 0);
         right = 0;
         left = 0;
         up = 1;
@@ -483,7 +485,7 @@ int main(void) {
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(1000);
 
-        set_target_position(-100, 230, 0, 0);
+        set_target_position(-80, 230, 0, 0);
         right = 0;
         left = 1;
         up = 0;
@@ -492,7 +494,7 @@ int main(void) {
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(1000);
         
-        set_target_position(-100, 100, 0, 0);
+        set_target_position(-90, 100, 0, 0);
         right = 0;
         left = 1;
         up = 0;
@@ -501,7 +503,7 @@ int main(void) {
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){ UpdateOLEDDisplay();};
         delay_ms(1000);
 
-        set_target_position(-220, 120, 0, 0);
+        set_target_position(-210, 120, 0, 0);
         right = 0;
         left = 0;
         up = 0;
@@ -520,7 +522,7 @@ int main(void) {
         delay_ms(300);
 
 
-        set_target_position(30, 120, 0, 0);
+        set_target_position(25, 120, 0, 0);
         right = 0;
         left = 0;
         up = 0;
@@ -540,7 +542,7 @@ int main(void) {
         // delay_ms(300);
 
 
-        set_target_position(0, 0, 0, 0);
+        set_target_position(0, -15, 0, 0);
         right = 0;
         left = 0;
         up = 0;
@@ -557,6 +559,16 @@ int main(void) {
         up = 0;
         down = 1;
         InitPIDControllers();        // 初始化PID控制器
+        while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
+        delay_ms(300);
+
+        target_yaw = 0;
+        set_target_position(15, -15, 0, 0);
+        right = 0;
+        left = 0;
+        up = 0;
+        down = 1;
+        InitPIDControllers();  
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){ while (1){UpdateOLEDDisplay();}};
         delay_ms(300);
 
