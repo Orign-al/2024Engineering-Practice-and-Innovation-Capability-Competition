@@ -278,7 +278,7 @@ void pack_red_2() {						//抓取左边的蓝色（平地抓取）阶段2
    delay_ms(3500);
 //	 // 执行动作6：移动到位置 2000，速度 800
    move_robot_arm_speed(3, 988, 1000);     
- delay_ms(1000);
+ delay_ms(1500);
 }
 
 
