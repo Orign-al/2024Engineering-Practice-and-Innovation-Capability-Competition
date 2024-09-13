@@ -60,7 +60,7 @@ void Initial_Position() {     //初始姿势以及行走姿势
 //    // 延时
     delay_ms(100);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(1, 2047, 1000);
+    move_robot_arm_speed(1, 2690, 1000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(100);
 //    // 执行动作2：移动到位置 2000，速度 800
@@ -99,7 +99,7 @@ void watch_Initial_Position() {     //机械臂前伸，视觉
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3123, 1000);
+    move_robot_arm_speed(1, 2690, 1000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
@@ -123,7 +123,7 @@ void watch_Initial_Position() {     //机械臂前伸，视觉
 
 void pack_green_1() {        //抓取中间的绿色（平地抓取）阶段1
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3123, 1000);
+    move_robot_arm_speed(1, 2690, 1000);
     // 延时
   delay_ms(500);
 	 // 执行动作2：移动到位置 3000，速度 1000
@@ -176,7 +176,7 @@ void pack_green_2() {						//抓取中间的绿色（平地抓取）阶段2
 
 void pack_blue_1() {        //抓取左边的蓝色色（平地抓取）阶段1
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3123, 1000);
+    move_robot_arm_speed(1, 2690, 1000);
     // 延时
   delay_ms(500);
 		 // 执行动作2：移动到位置 3000，速度 1000
@@ -229,7 +229,7 @@ void pack_blue_2() {						//抓取左边的蓝色（平地抓取）阶段2
 
 void pack_red_1() {        //抓取左边的蓝色色（平地抓取）阶段1
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3123, 1000);
+    move_robot_arm_speed(1, 2690, 1000);
     // 延时
   delay_ms(1500);
 	 // 执行动作2：移动到位置 3000，速度 1000
@@ -284,7 +284,7 @@ void pack_red_2() {						//抓取左边的蓝色（平地抓取）阶段2
 
 void pack_yuantai_1() {						//抓取转盘上的物块
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(1, 3123, 1000);
+   move_robot_arm_speed(1, 2690, 1000);
 //    // 延时
    delay_ms(500);
 	//    // 执行动作1：移动到位置 1000，速度 1000

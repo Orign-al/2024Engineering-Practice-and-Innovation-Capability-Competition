@@ -1,5 +1,5 @@
 Dependencies for Project 'STM32F407', Target 'STM32F407': (DO NOT MODIFY !)
-F (.\main.c)(0x66E2503F)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\FWLIB\inc -I ..\Hardware -I ..\SYSTEM -I ..\OBJ-I.\RTE\_STM32F407-ID:\Keil5\ARM\PACK\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+F (.\main.c)(0x66E253A5)(--c99 -c --cpu Cortex-M4.fp -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\FWLIB\inc -I ..\Hardware -I ..\SYSTEM -I ..\OBJ-I.\RTE\_STM32F407-ID:\Keil5\ARM\PACK\Keil\STM32F4xx_DFP\2.16.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include-ID:\Keil5\ARM\CMSIS\Include-D__UVISION_VERSION="524" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
 I (include.h)(0x66E1B156)
 I (stm32f4xx.h)(0x66E1B156)
 I (..\CORE\core_cm4.h)(0x66E1B156)

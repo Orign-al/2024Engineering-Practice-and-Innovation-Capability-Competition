@@ -27,11 +27,23 @@ Project File Date:  09/12/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\Keil5\ARM\ARMCC\Bin'
 Build target 'STM32F407'
-compiling ACTION.c...
+compiling main.c...
+main.c(10): warning:  #47-D: incompatible redefinition of macro "POSITION_DEADBAND"  (declared at line 101 of "include.h")
+  #define POSITION_DEADBAND 13  // 死区值，单位取决于编码器的单�?
+main.c(183): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "void *"
+      memset(rx_buffer, 0, 
+UFFER_SIZE);  // 清空缓冲�?
+main.c(300): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "char *"
+          pi_data_process(rx_buffer ,&x_pi ,&y_pi, &pi_put_obj_fir , &pi_put_obj_sec);
+main.c(382): warning:  #223-D: function "TIM6_Int_Init" declared implicitly
+      TIM6_Int_Init(99, 839);      // 初始化定时器6中断，每�?1000�?
+main.c(383): warning:  #223-D: function "TIM7_Int_Init" declared implicitly
+      TIM7_Int_Init(99, 839);      // 初始化定时器7中断，每�?1000�?
+main.c: 5 warnings, 0 errors
 linking...
-Program Size: Code=13780 RO-data=2768 RW-data=136 ZI-data=3216  
+Program Size: Code=14184 RO-data=2768 RW-data=152 ZI-data=3216  
 FromELF: creating hex file...
-".\Objects\STM32F407.axf" - 0 Error(s), 0 Warning(s).
+".\Objects\STM32F407.axf" - 0 Error(s), 5 Warning(s).
 
 <h2>Software Packages used:</h2>
 
