@@ -7,7 +7,8 @@
 extern uint8_t data[13];
 extern void move_robot_arm_speed (void);
 extern void Initial_Position (void);
-extern void watch_Initial_Position(void);
+extern void watch_Initial_Position1(void);
+extern void watch_Initial_Position2(void);
 extern void pack_green_1(void);
 extern void pack_green_2(void);
 extern void pack_blue_1(void);
