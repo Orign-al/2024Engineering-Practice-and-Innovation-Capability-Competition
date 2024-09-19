@@ -1,2 +1,4 @@
-Load "d:\\Code\\STM32\\程序\\标准库\\工创赛-m2006\\USER\\Objects\\STM32F407.axf" 
-Erase Done.Programming Done.Verify OK.Flash Load finished at 14:11:23
+*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'STM32F407'
+".\Objects\STM32F407.axf" - 0 Error(s), 0 Warning(s).
+Build Time Elapsed:  00:00:01

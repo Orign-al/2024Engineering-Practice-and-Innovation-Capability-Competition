@@ -41,7 +41,7 @@ volatile uint8_t rx_complete = 0;         // 接收完成标志位
 
 int position_x, position_y;
 int sign_move, flag_arr_speed_1, flag_arr_speed_2, flag_arr_speed_3, flag_arr_speed_4;
-int x_pi, y_pi;
+int32 x_pi, y_pi , pi_command , x_move , y_move;
 int pi_put_obj_fir = 999;
 int pi_put_obj_sec = 999;
 int vy, vx, omega, r;
@@ -50,6 +50,11 @@ float target_yaw = 0.0f;  // 目标Yaw角
 int Move_num = 1;
 int run_num = 1;
 int left = 0, right = 0, up = 0, down = 0;
+
+
+
+int third_yuntai , second_yuntai ,first_yuntai ;
+
 // uint8_t data;
 
 volatile uint32_t system_ticks = 0;
@@ -266,27 +271,32 @@ void UpdateOLEDDisplay(void) {
     OLED_Clear();
 
 
-    OLED_ShowNumber(0, 2, x_pi);
+    OLED_ShowNumber(0, 2, x_move);
     OLED_ShowNumber(24, 2,y_pi);
-    
-    OLED_ShowNumber(0, 6, pi_put_obj_fir);
-    OLED_ShowNumber(24, 6, pi_put_obj_sec);
+//    
+    OLED_ShowNumber(0, 6, x_pi);
+    OLED_ShowNumber(24, 6, y_pi);
+//    OLED_ShowNumber(48, 6, pi_command);
 
     // OLED_ShowNumber(0, 6, flag_arr_speed_4);
     // OLED_ShowNumber(24, 6, motors[2].revolutions);
 
 }
 
-void pi_data_process(char *rx_buffer ,int *x ,int *y, int *put_obj_fir , int *put_obj_sec) {
+void pi_data_process(char *rx_buffer ,int32 *x ,int32 *y, int *put_obj_fir , int *put_obj_sec, int *command) {
     int strlenmax;
     strlenmax = strlen(rx_buffer);
     if(rx_buffer[0] == 'A' && rx_buffer[1] == 'Z' && rx_buffer[strlenmax-2] == 'Z' && rx_buffer[strlenmax -1] == 'A' ){
-        sscanf(rx_buffer, "AZx%dy%dZA", x, y); 
-        // ClearRxBuffer();       
+        sscanf(rx_buffer, "AZ%d+%dZA", x, y); 
+        ClearRxBuffer();       
     }
     if(rx_buffer[0] == 'B' && rx_buffer[1] == 'Z' && rx_buffer[strlenmax-2] == 'Z' && rx_buffer[strlenmax -1] == 'B' ){
         sscanf(rx_buffer, "BZ%d+%dZB", put_obj_fir, put_obj_sec);
-        // ClearRxBuffer();        
+        ClearRxBuffer();        
+    }
+    if(rx_buffer[0] == 'C' && rx_buffer[1] == 'Z' && rx_buffer[strlenmax-2] == 'Z' && rx_buffer[strlenmax -1] == 'C' ){
+        sscanf(rx_buffer, "CZ%dZC", command);
+        ClearRxBuffer();        
     }
 
 }
@@ -297,7 +307,7 @@ void TIM6_DAC_IRQHandler(void) {
         TIM_ClearITPendingBit(TIM6, TIM_IT_Update);
         system_ticks++;
         ProcessReceivedData();
-        pi_data_process(rx_buffer ,&x_pi ,&y_pi, &pi_put_obj_fir , &pi_put_obj_sec);
+        pi_data_process(rx_buffer ,&x_pi ,&y_pi, &pi_put_obj_fir , &pi_put_obj_sec, &pi_command);
 
         
         if (system_ticks % 500 == 0) {
@@ -434,17 +444,20 @@ int main(void) {
         // int i = 1 ;
 
 
-       // while(1){
+       while(1){
 
-       //     if (pi_put_obj_fir != 999 && pi_put_obj_sec != 999)
-       //     {
-       //         break;
-       //     }
+           if (pi_put_obj_fir != 999 && pi_put_obj_sec != 999)
+           {
+                third_yuntai =  pi_put_obj_fir % 10 ;
+                second_yuntai = ((pi_put_obj_fir - third_yuntai) / 10)%10;
+                first_yuntai = (pi_put_obj_fir - third_yuntai - second_yuntai*10) / 100;
+                 break;
+           }
             
-      //  }
+       }
 
 
-        
+        ClearRxBuffer();
 
         delay_ms(3000);
 
@@ -456,13 +469,62 @@ int main(void) {
         down = 0;
         InitPIDControllers();        // 初始化PID控制器
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
-        delay_ms(1000);
-        pick_yuantai_green();
-        delay_ms(1000);
-        pick_yuantai_red();
-        delay_ms(1000);
-        pick_yuantai_blue();
-        
+        delay_ms(300);
+        watch_Initial_Position1(); //视觉动作抬伸
+		int j = 1;
+		while( 1){
+//					x_move += 3*x_pi/(abs(x_pi));
+//					y_move += 3*y_pi/(abs(y_pi));
+			delay_ms(500);
+			x_move = x_pi/20;
+			
+			#define POSITION_DEADBAND 2  // 死区值，单位取决于编码器的单位
+			set_target_position(-185 + x_move, 30 + y_move , 0, 0);
+			
+			while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
+			
+			
+			y_move = y_pi/15;
+			set_target_position(-185 + x_move, 30 + y_move , 0, 0);
+			
+			while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
+			
+			if(pi_command != 9991 || pi_command != 9992 || pi_command != 9993){	break;}
+
+			
+
+			
+		}
+
+//		switch ( pi_put_obj_fir )
+//		{
+//		case 123: while(pi_command == 9991 ){pick_yuantai_red();pi_command = 0; while(pi_command == 9992){pick_yuantai_green();pi_command = 0; while( pi_command == 9993){pick_yuantai_blue(); break ;}break;}break;}
+//		case 132: while(pi_command == 9991 ){pick_yuantai_red();pi_command = 0; while(pi_command == 9993){pick_yuantai_blue();pi_command = 0; while( pi_command == 9992){pick_yuantai_green(); break ;}break;}break;}
+//		case 231: break;
+//		case 312: break;
+//		case 321: break;
+//		case 213: break;
+//		
+//		}
+		
+		int catch_fir_flag = 0;
+		while( catch_fir_flag < 3){
+		
+			if(pi_command == 9991){pick_yuantai_red(); catch_fir_flag++;}		
+			if(pi_command == 9992){pick_yuantai_green(); catch_fir_flag++;}
+			if(pi_command == 9993){pick_yuantai_blue(); catch_fir_flag++;}
+		
+		}
+
+
+
+        // //抓取绿色
+        // pick_yuantai_green();
+        // //抓取红色
+        // pick_yuantai_red();
+        // //抓取蓝色
+        // pick_yuantai_blue();
+		#define POSITION_DEADBAND 13  // 死区值，单位取决于编码器的单位
         target_yaw = 45;
         delay_ms(1000);
         set_target_position(-80, 20, 0, 0);
@@ -491,6 +553,8 @@ int main(void) {
         InitPIDControllers();        // 初始化PID控制器
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(1000);
+
+        watch_Initial_Position2();   //视觉动作抬伸
         
         set_target_position(-90, 100, 0, 0);
         right = 0;
