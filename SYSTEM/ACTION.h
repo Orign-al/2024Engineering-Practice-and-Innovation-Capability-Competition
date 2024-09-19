@@ -3,12 +3,13 @@
 #include "stm32f4xx.h"                  // Device header
 
 
-extern void ACTION_PLATFORM_blue(void);
-extern void ACTION_PLATFORM_red(void);
-extern void ACTION_PLATFORM_green(void);
+// 全局数据数组
+extern uint8_t ZQ_data[13];
+extern void move_robot_arm_speed (void);
+extern void watch_Initial_Position1(void);
+extern void watch_Initial_Position2(void);
 
-extern void ACTION_GROUND_blue(void);
-extern void ACTION_GROUND_red(void);
-extern void ACTION_GROUND_green(void);
+
+
 #endif
 
