@@ -56,7 +56,7 @@ void watch_Initial_Position1() {     //机械臂前伸，视觉（转盘）
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 2766, 1000);
+    move_robot_arm_speed(1, 2020, 1000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
@@ -84,7 +84,7 @@ void watch_Initial_Position2() {     //机械臂前伸，视觉（平地）
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 2690, 1000);
+    move_robot_arm_speed(1, 2020, 1000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
@@ -123,7 +123,7 @@ void put_zhongjian() {     //机械臂前伸，视觉（平地）
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 2764, 1000);
+    move_robot_arm_speed(1, 2020, 1000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
@@ -152,7 +152,7 @@ void put_zuobian() {     //机械臂前伸，视觉（平地）
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 2764, 1000);
+    move_robot_arm_speed(1, 2020, 1000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
@@ -180,7 +180,7 @@ void put_youbian() {     //机械臂前伸，视觉（平地）
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 2764, 1000);
+    move_robot_arm_speed(1, 2020, 1000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
@@ -207,7 +207,7 @@ void put_youbian() {     //机械臂前伸，视觉（平地）
 void pick_car_zhong() {     //机械臂前伸，视觉（平地）
 //	 // 执行动作6：移动到位置 200，速度 800
 		 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 2764, 1000);
+    move_robot_arm_speed(1, 2020, 1000);
     // 延时
   delay_ms(500);
    move_robot_arm_speed(6, 2860, 1000);
@@ -240,7 +240,7 @@ void pick_car_zhong() {     //机械臂前伸，视觉（平地）
 void pick_car_zuo() {     //机械臂前伸，视觉（平地）
 //	 // 执行动作6：移动到位置 200，速度 800
 		 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 2764, 1000);
+    move_robot_arm_speed(1, 2020, 1000);
 
 	 // 执行动作3：移动到位置 3000，速度 1000
    move_robot_arm_speed(2, 2481, 1000);
@@ -269,7 +269,7 @@ void pick_car_zuo() {     //机械臂前伸，视觉（平地）
 void pick_car_you() {     //机械臂前伸，视觉（平地）
 //	 // 执行动作6：移动到位置 200，速度 800
 		 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 2764, 1000);
+    move_robot_arm_speed(1, 2020, 1000);
 
 	 // 执行动作3：移动到位置 3000，速度 1000
    move_robot_arm_speed(2, 1758, 1000);
