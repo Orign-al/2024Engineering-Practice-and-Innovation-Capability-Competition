@@ -399,9 +399,7 @@ int main(void) {
 	delay_init(168);
     delay_ms(1000);	
     //行走、初始姿态
-	 Initial_Position();        //初始动作 以及 行走动作
-     delay_ms(500);
-    Preparation_to_pack();      //  准备抓取动作
+
 
     while (1) {
 
@@ -458,13 +456,12 @@ int main(void) {
         down = 0;
         InitPIDControllers();        // 初始化PID控制器
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
-        delay_ms(300);
-        watch_Initial_Position();   //视觉动作抬伸
-        delay_ms（1000）；
-		ACTION_PLATFORM_green();
-		ACTION_PLATFORM_red();
-		ACTION_PLATFORM_blue();
-
+        delay_ms(1000);
+        pick_yuantai_green();
+        delay_ms(1000);
+        pick_yuantai_red();
+        delay_ms(1000);
+        pick_yuantai_blue();
         
         target_yaw = 45;
         delay_ms(1000);
