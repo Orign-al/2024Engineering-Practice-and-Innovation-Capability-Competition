@@ -56,7 +56,7 @@ move_robot_arm_speed(1,3146, 1000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(3, 1397, 1000);
+   move_robot_arm_speed(3, 1507, 1000);
 //    // 延时
     delay_ms(500);
 //    // 执行动作1：移动到位置 1000，速度 1000
@@ -89,12 +89,12 @@ void watch_Initial_Position1() {     //机械臂前伸，视觉（转盘）
 //    // 延时
     delay_ms(500);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1577, 1000);
+    move_robot_arm_speed(3, 1687, 1000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(500);
 
 //	 // 执行动作5：移动到位置 2000，速度 800
-   move_robot_arm_speed(5, 2145, 1000);
+   move_robot_arm_speed(5, 1930, 1000);
 //    // 延时
    delay_ms(1000);
 //	 // 执行动作6：移动到位置 2000，速度 800
@@ -117,7 +117,7 @@ void watch_Initial_Position2() {     //机械臂前伸，视觉（平地）
 //    // 延时
     delay_ms(1000);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1388, 1000);
+    move_robot_arm_speed(3, 1498, 1000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(500);
 
