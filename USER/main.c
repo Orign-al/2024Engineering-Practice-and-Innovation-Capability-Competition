@@ -409,7 +409,7 @@ int main(void) {
 	delay_init(168);
     delay_ms(1000);	
     //行走、初始姿态
-
+    initial_pos();
 
     while (1) {
 

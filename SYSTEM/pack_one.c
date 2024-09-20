@@ -47,7 +47,32 @@ void move_robot_arm_speed (uint8_t ID,uint16_t pos , uint16_t speed){
 
 // move_robot_arm_speed 函数实现
 
+void initial_pos() {  
+move_robot_arm_speed(1,3146, 1000);
+//    // 延时
+  delay_ms(50);
+	 // 执行动作1：移动到位置 2000，速度 800
+    move_robot_arm_speed(2, 3359, 1000);
+    // 延时
+  delay_ms(500);
+	 // 执行动作3：移动到位置 3000，速度 1000
+   move_robot_arm_speed(3, 1397, 1000);
+//    // 延时
+    delay_ms(500);
+//    // 执行动作1：移动到位置 1000，速度 1000
+    move_robot_arm_speed(4, 3814, 1000);
+//    // 可能需要一些延时，具体延时值根据需求调整
+    delay_ms(500);
 
+//	 // 执行动作5：移动到位置 2000，速度 800
+   move_robot_arm_speed(5, 3524, 1000);
+//    // 延时
+   delay_ms(1000);
+//	 // 执行动作6：移动到位置 2000，速度 800
+   move_robot_arm_speed(6, 2186, 1000);
+//    // 延时
+	
+}
 
 
 void watch_Initial_Position1() {     //机械臂前伸，视觉（转盘）

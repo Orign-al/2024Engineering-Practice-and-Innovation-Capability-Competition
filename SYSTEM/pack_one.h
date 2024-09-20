@@ -8,6 +8,7 @@ extern uint8_t ZQ_data[13];
 extern void move_robot_arm_speed (void);
 extern void watch_Initial_Position1(void);
 extern void watch_Initial_Position2(void);
+extern void initial_pos(void);
 
 extern void put_zhongjian (void);
 extern void put_zuobian(void);
