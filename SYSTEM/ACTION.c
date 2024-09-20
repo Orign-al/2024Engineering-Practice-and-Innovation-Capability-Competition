@@ -4,32 +4,32 @@
 
 void pick_yuantai_green() {     //机械臂前伸，视觉（转盘）
 
-	watch_Initial_Position1();
-	delay_ms(1000);
+//	watch_Initial_Position1();
+	delay_ms(500);
 	pick_yuantai();
-	delay_ms(1000);
+	delay_ms(1400);
 	put_zhongjian();
-	delay_ms(2000);
+
 }
 
 
 void pick_yuantai_red() {  
 //	抓取转盘 放在左边
-	watch_Initial_Position1(); //视觉的初始位置
-	delay_ms(2000);
+//	watch_Initial_Position1(); //视觉的初始位置
+	delay_ms(500);
 	pick_yuantai();
-	delay_ms(1000);
+	delay_ms(1400);
 	put_zuobian();
-	delay_ms(2000);
+
 }
 
 
 void pick_yuantai_blue() {  
 //	抓取转盘 放在右边
-	watch_Initial_Position1(); //视觉的初始位置
-	delay_ms(2000);
+//	watch_Initial_Position1(); //视觉的初始位置
+	delay_ms(500);
 	pick_yuantai();
-	delay_ms(1000);
+	delay_ms(1400);
 	put_youbian();
 }
 
