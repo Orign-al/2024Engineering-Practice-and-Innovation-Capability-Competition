@@ -94,7 +94,7 @@ void watch_Initial_Position1() {     //机械臂前伸，视觉（转盘）
     delay_ms(500);
 
 //	 // 执行动作5：移动到位置 2000，速度 800
-   move_robot_arm_speed(5, 1930, 1000);
+   move_robot_arm_speed(5, 2015, 1000);
 //    // 延时
    delay_ms(1000);
 //	 // 执行动作6：移动到位置 2000，速度 800
@@ -134,16 +134,18 @@ void watch_Initial_Position2() {     //机械臂前伸，视觉（平地）
 void pick_yuantai() {     //在转盘处的抓取
 
 	    move_robot_arm_speed(3, 1838, 1000);
-		delay_ms(200);
-		move_robot_arm_speed(4, 777, 1000);
-		delay_ms(1000);
+		delay_ms(50);
+		move_robot_arm_speed(4, 863, 1000);
+		delay_ms(800);
 		move_robot_arm_speed(3, 1673, 1000);
-		delay_ms(300);
+		delay_ms(100);
+//		move_robot_arm_speed(4, 777, 1000);
+//		delay_ms(1000);
 		move_robot_arm_speed(6, 3100, 1000);
 }
 
 void put_zhongjian() {     //放转盘上绿色到车上
-	//    // 执行动作2：移动到位置 2000，速度 800
+			//    // 执行动作2：移动到位置 2000，速度 800
    move_robot_arm_speed(4,3618, 1000);
 //    // 延时
   delay_ms(50);
@@ -152,40 +154,11 @@ void put_zhongjian() {     //放转盘上绿色到车上
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(2, 2116, 1000);
+   move_robot_arm_speed(2, 2071, 1000);
 //    // 延时
     delay_ms(500);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1504, 1000);
-//    // 可能需要一些延时，具体延时值根据需求调整
-    delay_ms(500);
-
-//	 // 执行动作5：移动到位置 2000，速度 800
-   move_robot_arm_speed(5, 2673, 1000);
-//    // 延时
-   delay_ms(2000);
-//	 // 执行动作6：移动到位置 200，速度 800
-   move_robot_arm_speed(6, 2860, 1000);
-
-//    // 延时
-  
-}
-
-void put_zuobian() {     //放转盘上红色到车上
-	//    // 执行动作2：移动到位置 2000，速度 800
-   move_robot_arm_speed(4,3618, 1000);
-//    // 延时
-  delay_ms(50);
-	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3115, 1000);
-    // 延时
-  delay_ms(500);
-	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(2, 2466, 1000);
-//    // 延时
-    delay_ms(500);
-//    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1449, 1000);
+    move_robot_arm_speed(3, 1542, 1000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(500);
 
@@ -199,6 +172,35 @@ void put_zuobian() {     //放转盘上红色到车上
   
 }
 
+void put_zuobian() {     //放转盘上红色到车上
+			//    // 执行动作2：移动到位置 2000，速度 800
+   move_robot_arm_speed(4,3618, 1000);
+//    // 延时
+  delay_ms(50);
+	 // 执行动作1：移动到位置 2000，速度 800
+    move_robot_arm_speed(1, 3115, 1000);
+    // 延时
+  delay_ms(500);
+	 // 执行动作3：移动到位置 3000，速度 1000
+   move_robot_arm_speed(2, 2494, 1000);
+//    // 延时
+    delay_ms(500);
+//    // 执行动作1：移动到位置 1000，速度 1000
+    move_robot_arm_speed(3, 1542, 1000);
+//    // 可能需要一些延时，具体延时值根据需求调整
+    delay_ms(500);
+
+//	 // 执行动作5：移动到位置 2000，速度 800
+   move_robot_arm_speed(5, 2563, 1000);
+//    // 延时
+   delay_ms(1800);
+//	 // 执行动作6：移动到位置 200，速度 800
+   move_robot_arm_speed(6, 2860, 1000);
+//    // 延时
+  
+  
+}
+
 void put_youbian() {     //放转盘上蓝色的到车上
 		//    // 执行动作2：移动到位置 2000，速度 800
    move_robot_arm_speed(4,3618, 1000);
@@ -209,11 +211,11 @@ void put_youbian() {     //放转盘上蓝色的到车上
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(2, 1750, 1000);
+   move_robot_arm_speed(2, 1770, 1000);
 //    // 延时
     delay_ms(500);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1449, 1000);
+    move_robot_arm_speed(3, 1542, 1000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(500);
 
