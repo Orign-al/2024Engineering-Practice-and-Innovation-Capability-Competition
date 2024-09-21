@@ -52,6 +52,9 @@ int run_num = 1;
 int left = 0, right = 0, up = 0, down = 0;
 int mini_pos_corr;
 
+char test_message[] = "1\n";
+    // char test_message[] = "Hello, UART5!\n";
+
 
 
 int third_yuntai , second_yuntai ,first_yuntai ;
@@ -160,16 +163,16 @@ void InitPIDControllers(void) {
 		PID_Init(&angle_pid_controllers, 3.0f,4.0f, 0.001f, 360.0f);  // 角度环参数
 
 		// 初始化位置环PID控制器
-		PID_Init(&position_pid_controllers[0], 64.0f, 5.3f, 0.0f, 1000.0f);
-		PID_Init(&position_pid_controllers[1], 64.0f, 5.3f, 0.0f, 1000.0f);
-		PID_Init(&position_pid_controllers[2], 64.0f, 5.3f, 0.0f, 1000.0f);
-		PID_Init(&position_pid_controllers[3], 64.0f, 5.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[0], 70.0f, 3.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[1], 70.0f, 3.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[2], 70.0f, 3.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[3], 70.0f, 3.3f, 0.0f, 1000.0f);
 
 		// 初始化速度环PID控制器
-		PID_Init(&speed_pid_controllers[0], 1.8f, 2.5f, 0.012f, 100.0f);
-		PID_Init(&speed_pid_controllers[1], 1.8f, 2.5f, 0.012f, 100.0f);
-		PID_Init(&speed_pid_controllers[2], 1.8f, 2.7f, 0.012f, 100.0f);
-		PID_Init(&speed_pid_controllers[3], 1.8f, 2.5f, 0.012f, 100.0f);
+		PID_Init(&speed_pid_controllers[0], 1.8f, 3.5f, 0.012f, 100.0f);
+		PID_Init(&speed_pid_controllers[1], 1.8f, 3.5f, 0.012f, 100.0f);
+		PID_Init(&speed_pid_controllers[2], 1.8f, 3.7f, 0.012f, 100.0f);
+		PID_Init(&speed_pid_controllers[3], 1.8f, 3.5f, 0.012f, 100.0f);
 
 		// 初始化电流环PID控制器
 		PID_Init(&current_pid_controllers[0], 1.1f, 0.00f, 0.0022f, 1000.0f);
@@ -179,9 +182,9 @@ void InitPIDControllers(void) {
 
 		// 设置输出限幅
 		for (int i = 0; i < MOTOR_COUNT; i++) {
-			PID_SetOutputLimits(&position_pid_controllers[i], -10000, 10000);
-			PID_SetOutputLimits(&speed_pid_controllers[i], -6000, 6000);
-			PID_SetOutputLimits(&current_pid_controllers[i], -8000, 8000);
+			PID_SetOutputLimits(&position_pid_controllers[i], -5000, 5000);
+			PID_SetOutputLimits(&speed_pid_controllers[i], -3000, 3000);
+			PID_SetOutputLimits(&current_pid_controllers[i], -2000, 2000);
 		}
 		// 角度环限幅只需对一个控制器进行设置
 		PID_SetOutputLimits(&angle_pid_controllers, -360, 360);
@@ -499,7 +502,7 @@ int main(void) {
         delay_ms(3000);
 
         target_yaw = 47;
-        set_target_position(-185, 35, 0, 0);
+        set_target_position(-185, 30, 0, 0);
         right = 1;
         left = 0;
         up = 0;
@@ -508,29 +511,36 @@ int main(void) {
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(300);
         watch_Initial_Position1(); //视觉动作抬伸
-		delay_ms(5000);		
+        delay_ms(10000);
+        for(int i = 0;i<10;i++){
+        UART5_Transmit((uint8_t *)test_message, strlen(test_message));
+        delay_ms(100);
+        }
+
+	
 		int j = 1;
         int catch_fir_flag = 0;
 		while( pi_command != 9991 || pi_command != 9992 || pi_command != 9993){
 //					x_move += 3*x_pi/(abs(x_pi));
 //					y_move += 3*y_pi/(abs(y_pi));
 
-			if(x_move<=150&&y_move<=150){
+
+			if(x_move<=150&&y_move<=150 ){
 				mini_pos_corr = 1;
 						InitPIDControllers();  
-				x_move = x_pi/30;
+				x_move = x_pi/35;
 				
 				#define POSITION_DEADBAND 0  // 死区值，单位取决于编码器的单位
-				set_target_position(-185 + x_move, 35 + y_move , 0, 0);
+				set_target_position(-185 + x_move, 30 + y_move , 0, 0);
 				
 				while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
 				
-		//			delay_ms(500);
+					delay_ms(500);
 				
-				y_move = y_pi/20;
-				set_target_position(-185 + x_move, 35 + y_move , 0, 0);
+				y_move = y_pi/10;
+				set_target_position(-185 + x_move, 30 + y_move , 0, 0);
 				
-		//			delay_ms(500);
+					delay_ms(500);
 				
 				while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
 				
@@ -547,6 +557,7 @@ int main(void) {
 					break;
 				}
 			}
+
 
 			
 
@@ -592,7 +603,7 @@ int main(void) {
         up = 1;
         down = 0;
         InitPIDControllers();        // 初始化PID控制器
-        while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
+        while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){while(1){UpdateOLEDDisplay();}};
         delay_ms(1000);
 
         set_target_position(-90, 150, 0, 0);
@@ -604,7 +615,7 @@ int main(void) {
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(1000);
 
-        set_target_position(-80, 230, 0, 0);
+        set_target_position(-90, 230, 0, 0);
         right = 0;
         left = 1;
         up = 0;
@@ -614,6 +625,8 @@ int main(void) {
         delay_ms(1000);
 
         watch_Initial_Position2();   //视觉动作抬伸
+
+        
         
         set_target_position(-90, 100, 0, 0);
         right = 0;
