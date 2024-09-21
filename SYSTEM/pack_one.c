@@ -48,28 +48,28 @@ void move_robot_arm_speed (uint8_t ID,uint16_t pos , uint16_t speed){
 // move_robot_arm_speed 函数实现
 
 void initial_pos() {  
-move_robot_arm_speed(1,3146, 1000);
+move_robot_arm_speed(1,3146, 2000);
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(2, 3359, 1000);
+    move_robot_arm_speed(2, 3359, 2000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(3, 1507, 1000);
+   move_robot_arm_speed(3, 1507, 2000);
 //    // 延时
     delay_ms(500);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(4, 3814, 1000);
+    move_robot_arm_speed(4, 3814, 2000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(500);
 
 //	 // 执行动作5：移动到位置 2000，速度 800
-   move_robot_arm_speed(5, 3524, 1000);
+   move_robot_arm_speed(5, 3524, 2000);
 //    // 延时
    delay_ms(1000);
 //	 // 执行动作6：移动到位置 2000，速度 800
-   move_robot_arm_speed(6, 2186, 1000);
+   move_robot_arm_speed(6, 2186, 2000);
 //    // 延时
 	
 }
@@ -77,28 +77,28 @@ move_robot_arm_speed(1,3146, 1000);
 
 void watch_Initial_Position1() {     //机械臂前伸，视觉（转盘）
 	//    // 执行动作2：移动到位置 2000，速度 800
-   move_robot_arm_speed(4,1736, 1000);
+   move_robot_arm_speed(4,1736, 2000);
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3115, 1000);
+    move_robot_arm_speed(1, 3115, 2000);
     // 延时
   delay_ms(50);
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(2, 2033, 1000);
+   move_robot_arm_speed(2, 2033, 2000);
 //    // 延时
     delay_ms(100);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1687, 1000);
+    move_robot_arm_speed(3, 1687, 2000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(300);
 
 //	 // 执行动作5：移动到位置 2000，速度 800
-   move_robot_arm_speed(5, 2015, 1000);
+   move_robot_arm_speed(5, 2015, 2000);
 //    // 延时
    delay_ms(100);
 //	 // 执行动作6：移动到位置 2000，速度 800
-   move_robot_arm_speed(6, 2186, 1000);
+   move_robot_arm_speed(6, 2186, 2000);
 //    // 延时
   
 }
@@ -126,76 +126,75 @@ void watch_Initial_Position2() {     //机械臂前伸，视觉（平地）
 //    // 延时
    delay_ms(1000);
 //	 // 执行动作6：移动到位置 200，速度 800
-   move_robot_arm_speed(6, 2186, 1000);
+   move_robot_arm_speed(6, 2186, 2000);
 //    // 延时
   
 }
 
 void pick_yuantai() {     //在转盘处的抓取
 
-	    move_robot_arm_speed(3, 1838, 1000);
-		delay_ms(50);
-		move_robot_arm_speed(4, 863, 1000);
-		delay_ms(800);
-		move_robot_arm_speed(3, 1673, 1000);
+	    move_robot_arm_speed(3, 2034, 2000);
 		delay_ms(100);
-//		move_robot_arm_speed(4, 777, 1000);
-//		delay_ms(1000);
-		move_robot_arm_speed(6, 3100, 1000);
+		move_robot_arm_speed(4, 591, 2000);
+		delay_ms(300);
+	
+	
+	
+		move_robot_arm_speed(3, 1645, 2000);
+		delay_ms(500);
+		move_robot_arm_speed(4, 889, 2000);
+		delay_ms(200);
+		move_robot_arm_speed(6, 3100, 2000);
 }
 
 void put_zhongjian() {     //放转盘上绿色到车上
 			//    // 执行动作2：移动到位置 2000，速度 800
-   move_robot_arm_speed(4,3618, 1000);
+   move_robot_arm_speed(4,3610, 2000);
 //    // 延时
   delay_ms(50);
-	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3115, 1000);
-    // 延时
-  delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(2, 2071, 1000);
+   move_robot_arm_speed(2, 2190, 2000);
 //    // 延时
     delay_ms(500);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1542, 1000);
+    move_robot_arm_speed(3, 1542, 2000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(500);
 
 //	 // 执行动作5：移动到位置 2000，速度 800
-   move_robot_arm_speed(5, 2563, 1000);
+   move_robot_arm_speed(5, 2560, 2000);
 //    // 延时
    delay_ms(1800);
 //	 // 执行动作6：移动到位置 200，速度 800
-   move_robot_arm_speed(6, 2860, 1000);
+   move_robot_arm_speed(6, 2860, 2000);
 //    // 延时
   
 }
 
 void put_zuobian() {     //放转盘上红色到车上
 			//    // 执行动作2：移动到位置 2000，速度 800
-   move_robot_arm_speed(4,3618, 1000);
+   move_robot_arm_speed(4,3618, 2000);
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3115, 1000);
+    move_robot_arm_speed(1, 3115, 2000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(2, 2494, 1000);
+   move_robot_arm_speed(2, 2494, 2000);
 //    // 延时
     delay_ms(500);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1542, 1000);
+    move_robot_arm_speed(3, 1542, 2000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(500);
 
 //	 // 执行动作5：移动到位置 2000，速度 800
-   move_robot_arm_speed(5, 2563, 1000);
+   move_robot_arm_speed(5, 2563, 2000);
 //    // 延时
    delay_ms(1800);
 //	 // 执行动作6：移动到位置 200，速度 800
-   move_robot_arm_speed(6, 2860, 1000);
+   move_robot_arm_speed(6, 2860, 2000);
 //    // 延时
   
   
@@ -203,28 +202,28 @@ void put_zuobian() {     //放转盘上红色到车上
 
 void put_youbian() {     //放转盘上蓝色的到车上
 		//    // 执行动作2：移动到位置 2000，速度 800
-   move_robot_arm_speed(4,3618, 1000);
+   move_robot_arm_speed(4,3618, 2000);
 //    // 延时
   delay_ms(50);
 	 // 执行动作1：移动到位置 2000，速度 800
-    move_robot_arm_speed(1, 3115, 1000);
+    move_robot_arm_speed(1, 3115, 2000);
     // 延时
   delay_ms(500);
 	 // 执行动作3：移动到位置 3000，速度 1000
-   move_robot_arm_speed(2, 1770, 1000);
+   move_robot_arm_speed(2, 1770, 2000);
 //    // 延时
     delay_ms(500);
 //    // 执行动作1：移动到位置 1000，速度 1000
-    move_robot_arm_speed(3, 1542, 1000);
+    move_robot_arm_speed(3, 1542, 2000);
 //    // 可能需要一些延时，具体延时值根据需求调整
     delay_ms(500);
 
 //	 // 执行动作5：移动到位置 2000，速度 800
-   move_robot_arm_speed(5, 2563, 1000);
+   move_robot_arm_speed(5, 2563, 2000);
 //    // 延时
    delay_ms(1800);
 //	 // 执行动作6：移动到位置 200，速度 800
-   move_robot_arm_speed(6, 2860, 1000);
+   move_robot_arm_speed(6, 2860, 2000);
 //    // 延时
   
 }

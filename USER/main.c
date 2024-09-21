@@ -51,8 +51,9 @@ int Move_num = 1;
 int run_num = 1;
 int left = 0, right = 0, up = 0, down = 0;
 int mini_pos_corr;
+int target_x, target_y,runs;
 
-char test_message[] = "1\n";
+
     // char test_message[] = "Hello, UART5!\n";
 
 
@@ -163,10 +164,10 @@ void InitPIDControllers(void) {
 		PID_Init(&angle_pid_controllers, 3.0f,4.0f, 0.001f, 360.0f);  // 角度环参数
 
 		// 初始化位置环PID控制器
-		PID_Init(&position_pid_controllers[0], 70.0f, 3.3f, 0.0f, 1000.0f);
-		PID_Init(&position_pid_controllers[1], 70.0f, 3.3f, 0.0f, 1000.0f);
-		PID_Init(&position_pid_controllers[2], 70.0f, 3.3f, 0.0f, 1000.0f);
-		PID_Init(&position_pid_controllers[3], 70.0f, 3.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[0], 70.0f, 4.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[1], 70.0f, 4.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[2], 70.0f, 4.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[3], 70.0f, 4.3f, 0.0f, 1000.0f);
 
 		// 初始化速度环PID控制器
 		PID_Init(&speed_pid_controllers[0], 1.8f, 3.5f, 0.012f, 100.0f);
@@ -183,8 +184,42 @@ void InitPIDControllers(void) {
 		// 设置输出限幅
 		for (int i = 0; i < MOTOR_COUNT; i++) {
 			PID_SetOutputLimits(&position_pid_controllers[i], -5000, 5000);
-			PID_SetOutputLimits(&speed_pid_controllers[i], -3000, 3000);
-			PID_SetOutputLimits(&current_pid_controllers[i], -2000, 2000);
+			PID_SetOutputLimits(&speed_pid_controllers[i], -5000, 5000);
+			PID_SetOutputLimits(&current_pid_controllers[i], -5000, 5000);
+		}
+		// 角度环限幅只需对一个控制器进行设置
+		PID_SetOutputLimits(&angle_pid_controllers, -360, 360);
+	
+	
+	}
+    if(mini_pos_corr==2)
+	{
+		
+		PID_Init(&angle_pid_controllers, 3.0f,4.0f, 0.001f, 360.0f);  // 角度环参数
+
+		// 初始化位置环PID控制器
+		PID_Init(&position_pid_controllers[0], 20.0f, 4.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[1], 20.0f, 4.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[2], 20.0f, 4.3f, 0.0f, 1000.0f);
+		PID_Init(&position_pid_controllers[3], 20.0f, 4.3f, 0.0f, 1000.0f);
+
+		// 初始化速度环PID控制
+		PID_Init(&speed_pid_controllers[0], 10.0f, 10.5f, 0.012f, 100.0f);
+		PID_Init(&speed_pid_controllers[1], 10.0f, 10.5f, 0.012f, 100.0f);
+		PID_Init(&speed_pid_controllers[2], 10.0f, 10.5f, 0.012f, 100.0f);
+		PID_Init(&speed_pid_controllers[3], 10.0f, 10.5f, 0.012f, 100.0f);
+
+		// 初始化电流环PID控制器
+		PID_Init(&current_pid_controllers[0], 3.1f, 2.00f, 0.0022f, 100000.0f);
+		PID_Init(&current_pid_controllers[1], 3.1f, 2.00f, 0.0022f, 100000.0f);
+		PID_Init(&current_pid_controllers[2], 3.1f, 2.00f, 0.0022f, 100000.0f);
+		PID_Init(&current_pid_controllers[3], 3.1f, 2.00f, 0.0022f, 1000.0f);
+
+		// 设置输出限幅
+		for (int i = 0; i < MOTOR_COUNT; i++) {
+			PID_SetOutputLimits(&position_pid_controllers[i], -100000, 100000);
+			PID_SetOutputLimits(&speed_pid_controllers[i], -100000, 100000);
+			PID_SetOutputLimits(&current_pid_controllers[i], -1000000, 1000000);
 		}
 		// 角度环限幅只需对一个控制器进行设置
 		PID_SetOutputLimits(&angle_pid_controllers, -360, 360);
@@ -472,8 +507,7 @@ int main(void) {
 
         delay_ms(300); // 延时100ms，以便接收数据
 
-        set_target_position(0, 40, 0, 0);
-        while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
+
         delay_ms(300);
 
 
@@ -502,7 +536,7 @@ int main(void) {
         delay_ms(3000);
 
         target_yaw = 47;
-        set_target_position(-185, 30, 0, 0);
+        set_target_position(-185, 35, 0, 0);
         right = 1;
         left = 0;
         up = 0;
@@ -511,7 +545,8 @@ int main(void) {
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(300);
         watch_Initial_Position1(); //视觉动作抬伸
-        delay_ms(10000);
+        delay_ms(3000);
+        char test_message[] = "1\n";
         for(int i = 0;i<10;i++){
         UART5_Transmit((uint8_t *)test_message, strlen(test_message));
         delay_ms(100);
@@ -525,32 +560,27 @@ int main(void) {
 //					y_move += 3*y_pi/(abs(y_pi));
 
 
-			if(x_move<=150&&y_move<=150 ){
-				mini_pos_corr = 1;
-						InitPIDControllers();  
-				x_move = x_pi/35;
-				
-				#define POSITION_DEADBAND 0  // 死区值，单位取决于编码器的单位
-				set_target_position(-185 + x_move, 30 + y_move , 0, 0);
-				
-				while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
-				
-					delay_ms(500);
-				
-				y_move = y_pi/10;
-				set_target_position(-185 + x_move, 30 + y_move , 0, 0);
-				
-					delay_ms(500);
-				
-				while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
-				
+			if(x_move<=250&&y_move<=250 ){
+                #define POSITION_DEADBAND 0  // 死区值，单位取决于编码器的单位
+				mini_pos_corr = 2;
+				InitPIDControllers(); 
+                y_move = y_pi/2;
+                x_move = x_pi/2;
+                target_x = -185 + x_move ;
+                target_y = 35 + y_move ;
+				set_target_position(target_x, target_y , 0, 0); 
+
+				while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1 || runs == 1000){UpdateOLEDDisplay(); runs++;};
+
+
+	
 				if(pi_command == 9991 || pi_command == 9992 || pi_command == 9993){
 
 					while( catch_fir_flag < 3){
 					
-					if(pi_command == 9991){pick_yuantai_red();watch_Initial_Position1(); catch_fir_flag++;pi_command = 0;}		
-					if(pi_command == 9992){pick_yuantai_green();watch_Initial_Position1(); catch_fir_flag++;pi_command = 0;}
-					if(pi_command == 9993){pick_yuantai_blue();watch_Initial_Position1(); catch_fir_flag++;pi_command = 0;}
+					if(pi_command == 9991){pick_yuantai_red();watch_Initial_Position1(); catch_fir_flag++;pi_command = 111;}		
+					if(pi_command == 9992){pick_yuantai_green();watch_Initial_Position1(); catch_fir_flag++;pi_command = 111;}
+					if(pi_command == 9993){pick_yuantai_blue();watch_Initial_Position1(); catch_fir_flag++;pi_command = 111;}
 				
 					}
 					initial_pos();
@@ -564,16 +594,16 @@ int main(void) {
 			
 		}
 
-//		switch ( pi_put_obj_fir )
-//		{
-//		case 123: while(pi_command == 9991 ){pick_yuantai_red();pi_command = 0; while(pi_command == 9992){pick_yuantai_green();pi_command = 0; while( pi_command == 9993){pick_yuantai_blue(); break ;}break;}break;}
-//		case 132: while(pi_command == 9991 ){pick_yuantai_red();pi_command = 0; while(pi_command == 9993){pick_yuantai_blue();pi_command = 0; while( pi_command == 9992){pick_yuantai_green(); break ;}break;}break;}
-//		case 231: break;
-//		case 312: break;
-//		case 321: break;
-//		case 213: break;
-//		
-//		}
+// //		switch ( pi_put_obj_fir )
+// //		{
+// //		case 123: while(pi_command == 9991 ){pick_yuantai_red();pi_command = 0; while(pi_command == 9992){pick_yuantai_green();pi_command = 0; while( pi_command == 9993){pick_yuantai_blue(); break ;}break;}break;}
+// //		case 132: while(pi_command == 9991 ){pick_yuantai_red();pi_command = 0; while(pi_command == 9993){pick_yuantai_blue();pi_command = 0; while( pi_command == 9992){pick_yuantai_green(); break ;}break;}break;}
+// //		case 231: break;
+// //		case 312: break;
+// //		case 321: break;
+// //		case 213: break;
+// //		
+// //		}
 		
 		// int catch_fir_flag = 0;
 		// while( catch_fir_flag < 3){
@@ -597,16 +627,16 @@ int main(void) {
 		#define POSITION_DEADBAND 13  // 死区值，单位取决于编码器的单位
         target_yaw = 45;
         delay_ms(1000);
-        set_target_position(-80, 20, 0, 0);
+        set_target_position(-80+x_move, 20+y_move, 0, 0);
         right = 0;
         left = 0;
         up = 1;
         down = 0;
         InitPIDControllers();        // 初始化PID控制器
-        while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){while(1){UpdateOLEDDisplay();}};
+        while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(1000);
 
-        set_target_position(-90, 150, 0, 0);
+        set_target_position(-80+x_move, 150+y_move, 0, 0);
         right = 0;
         left = 0;
         up = 1;
@@ -615,16 +645,95 @@ int main(void) {
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(1000);
 
-        set_target_position(-90, 230, 0, 0);
+        set_target_position(-70+x_move, 230+y_move, 0, 0);
         right = 0;
         left = 1;
         up = 0;
         down = 0;
+
+
+
+        
         InitPIDControllers();        // 初始化PID控制器
         while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
         delay_ms(1000);
 
         watch_Initial_Position2();   //视觉动作抬伸
+
+        j = 1;
+        catch_fir_flag = 0;
+        pi_command = 0;
+        x_move = 0;
+        y_move = 0;
+        mini_pos_corr = 1;
+        InitPIDControllers();        // 初始化PID控制器
+        x_pi = 0;
+        y_pi = 0;
+        delay_ms(1000);
+        char test_message2[] = "2\n";
+        for(int i = 0;i<10;i++){
+        UART5_Transmit((uint8_t *)test_message2, strlen(test_message2));
+        delay_ms(100);
+        }
+
+
+		while( pi_command != 9991 || pi_command != 9992 || pi_command != 9993){
+//					x_move += 3*x_pi/(abs(x_pi));
+//					y_move += 3*y_pi/(abs(y_pi));
+
+
+			if(x_move<=300&&y_move<=300 ){
+				mini_pos_corr = 2;
+				 
+				x_move = x_pi/10;
+                y_move = y_pi/10;
+                target_x = -70+ x_move ;
+                target_y = 230 + y_move ;
+
+				
+				#define POSITION_DEADBAND 0  // 死区值，单位取决于编码器的单位
+                InitPIDControllers(); 
+				set_target_position(target_x, target_y , 0, 0);
+				
+				while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
+				
+
+				
+				// y_move = y_pi/1;
+                // target_x = -80 + x_move ;
+                // target_y = 230 + y_move ;
+				// set_target_position(target_x, target_y , 0, 0);
+				
+
+				
+				// while (flag_arr_speed_1 != 1 || flag_arr_speed_2 != 1 || flag_arr_speed_3 != 1 || flag_arr_speed_4 != 1){UpdateOLEDDisplay();};
+				
+				if(pi_command == 9992){
+
+					while( catch_fir_flag < 3){
+
+                        pick_car_out_red();
+                        catch_fir_flag++;
+                        pick_car_out_green();
+                        catch_fir_flag++;
+                        pick_car_out_blue();
+                        catch_fir_flag++;
+                        pi_command = 0;
+					
+
+					}
+					initial_pos();
+					break;
+				}
+			}
+
+
+			
+
+			
+		}
+
+
 
         
         
