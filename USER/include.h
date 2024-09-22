@@ -115,6 +115,8 @@ typedef unsigned short	string;
 
 #include "pack_one.h"
 #include "action.h"
+#include "m2006driver.h"
+#include "FineTune.h"
 
 //#include "MPU6050.h"
 //#include "MPU6050_Reg.h"
@@ -131,7 +133,7 @@ typedef unsigned short	string;
 
 ////#include "MPU6050_Reg.h"
 //#include "filter.h"
-#include "m2006driver.h"
+
 //#include "IIC.h"
 #include "Motor.h"
 #include "Move.h"
@@ -145,7 +147,6 @@ typedef unsigned short	string;
 #include "stm32f4xx_usart.h"
 #include "wit_c_sdk.h"
 #include "REG.h"
-
 
 
 

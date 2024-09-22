@@ -21,51 +21,13 @@ Target DLL:      CMSIS_AGDI.dll V1.28.3.0
 Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
-d:\Code\STM32\³ÌÐò\±ê×¼¿â\¹¤´´Èü-m2006\USER\STM32F407.uvprojx
-Project File Date:  09/19/2024
+D:\Code\STM32\³ÌÐò\±ê×¼¿â\¹¤´´Èü-m2006\USER\STM32F407.uvprojx
+Project File Date:  09/22/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'E:\Keil_v5\ARM\ARMCC\Bin'
 Build target 'STM32F407'
-compiling main.c...
-main.c(10): warning:  #47-D: incompatible redefinition of macro "POSITION_DEADBAND"  (declared at line 101 of "include.h")
-  #define POSITION_DEADBAND 13  // ???????€?????????????????????????????????????
-main.c(263): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "void *"
-      memset(rx_buffer, 0, 
-UFFER_SIZE);  // ???????????????
-main.c(385): warning:  #167-D: argument of type "volatile uint8_t *" is incompatible with parameter of type "char *"
-          pi_data_process(rx_buffer ,&x_pi ,&y_pi, &pi_put_obj_fir , &pi_put_obj_sec, &pi_command);
-main.c(385): warning:  #167-D: argument of type "int32 *" is incompatible with parameter of type "int *"
-          pi_data_process(rx_buffer ,&x_pi ,&y_pi, &pi_put_obj_fir , &pi_put_obj_sec, &pi_command);
-main.c(467): warning:  #223-D: function "TIM6_Int_Init" declared implicitly
-      TIM6_Int_Init(99, 839);      // ??????????????????6???????????????1000???
-main.c(468): warning:  #223-D: function "TIM7_Int_Init" declared implicitly
-      TIM7_Int_Init(99, 839);      // ??????????????????7???????????????1000???
-main.c(564): warning:  #47-D: incompatible redefinition of macro "POSITION_DEADBAND"  (declared at line 10)
-                  #define POSITION_DEADBAND 0  // ???????€?????????????????????????????????????
-main.c(581): warning:  #223-D: function "pick_yuantai_red" declared implicitly
-  					if(pi_command == 9991){pick_yuantai_red();watch_Initial_Position1(); catch_fir_flag++;pi_command = 111;}		
-main.c(582): warning:  #223-D: function "pick_yuantai_green" declared implicitly
-  					if(pi_command == 9992){pick_yuantai_green();watch_Initial_Position1(); catch_fir_flag++;pi_command = 111;}
-main.c(583): warning:  #223-D: function "pick_yuantai_blue" declared implicitly
-  					if(pi_command == 9993){pick_yuantai_blue();watch_Initial_Position1(); catch_fir_flag++;pi_command = 111;}
-main.c(627): warning:  #47-D: incompatible redefinition of macro "POSITION_DEADBAND"  (declared at line 564)
-  		#define POSITION_DEADBAND 13  // ???????€?????????????????????????????????????
-main.c(690): warning:  #47-D: incompatible redefinition of macro "POSITION_DEADBAND"  (declared at line 627)
-  				#define POSITION_DEADBAND 0  // ???????€?????????????????????????????????????
-main.c(711): warning:  #223-D: function "pick_car_out_red" declared implicitly
-                          pick_car_out_red();
-main.c(713): warning:  #223-D: function "pick_car_out_green" declared implicitly
-                          pick_car_out_green();
-main.c(715): warning:  #223-D: function "pick_car_out_blue" declared implicitly
-                          pick_car_out_blue();
-main.c(556): warning:  #550-D: variable "j"  was set but never used
-  		int j = 1;
-main.c: 16 warnings, 0 errors
-linking...
-Program Size: Code=17924 RO-data=2768 RW-data=192 ZI-data=3216  
-FromELF: creating hex file...
-".\Objects\STM32F407.axf" - 0 Error(s), 16 Warning(s).
+".\Objects\STM32F407.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -79,7 +41,7 @@ Package Vendor: Keil
   E:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:04
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

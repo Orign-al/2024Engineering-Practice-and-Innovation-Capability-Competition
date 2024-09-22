@@ -39,8 +39,10 @@
 .\objects\m2006driver.o: ..\Hardware\OLED.h
 .\objects\m2006driver.o: ..\SYSTEM\pack_one.h
 .\objects\m2006driver.o: ..\SYSTEM\action.h
-.\objects\m2006driver.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\m2006driver.o: ..\Hardware\m2006driver.h
+.\objects\m2006driver.o: ..\USER\FineTune.h
+.\objects\m2006driver.o: ..\USER\include.h
+.\objects\m2006driver.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\m2006driver.o: ..\Hardware\Motor.h
 .\objects\m2006driver.o: ..\SYSTEM\Move.h
 .\objects\m2006driver.o: ..\Hardware\Encoder.h

@@ -685,6 +685,16 @@
               <FileType>5</FileType>
               <FilePath>..\SYSTEM\ACTION.h</FilePath>
             </File>
+            <File>
+              <FileName>FineTune.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\FineTune.c</FilePath>
+            </File>
+            <File>
+              <FileName>FineTune.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\FineTune.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

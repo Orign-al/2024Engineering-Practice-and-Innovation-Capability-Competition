@@ -47,6 +47,7 @@
 ".\objects\dmp.o"
 ".\objects\pack_one.o"
 ".\objects\action.o"
+".\objects\finetune.o"
 ".\objects\encoder.o"
 ".\objects\motor.o"
 ".\objects\oled.o"

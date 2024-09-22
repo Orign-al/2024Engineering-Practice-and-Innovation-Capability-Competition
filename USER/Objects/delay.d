@@ -39,8 +39,10 @@
 .\objects\delay.o: ..\Hardware\OLED.h
 .\objects\delay.o: ..\SYSTEM\pack_one.h
 .\objects\delay.o: ..\SYSTEM\action.h
-.\objects\delay.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\delay.o: ..\Hardware\m2006driver.h
+.\objects\delay.o: ..\USER\FineTune.h
+.\objects\delay.o: ..\USER\include.h
+.\objects\delay.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\delay.o: ..\Hardware\Motor.h
 .\objects\delay.o: ..\SYSTEM\Move.h
 .\objects\delay.o: ..\Hardware\Encoder.h

@@ -9,7 +9,7 @@ extern void move_robot_arm_speed (void);
 extern void watch_Initial_Position1(void);
 extern void watch_Initial_Position2(void);
 extern void initial_pos(void);
-
+extern void put_zhongjian_car_out1(void);
 extern void put_zhongjian (void);
 extern void put_zuobian(void);
 extern void pick_yuantai(void);
@@ -26,6 +26,14 @@ extern void put_youbian_car_out (void);
 extern void put_zhong_car_out(void);
 
 extern void pick_zhong_move_zuo(void);
+
+
+extern void pick_car_zhong_cemian(void);
+extern void pick_car_zuo_cemian(void);
+extern void pick_car_you_cemian(void);
+extern void put_zhongjian_car_out_cemian(void);
+extern void put_zuobian_car_out_cemian(void);
+extern void put_youbian_car_out_cemian(void);
 
 
 #endif

@@ -39,8 +39,10 @@
 .\objects\usart.o: ..\Hardware\OLED.h
 .\objects\usart.o: ..\SYSTEM\pack_one.h
 .\objects\usart.o: ..\SYSTEM\action.h
-.\objects\usart.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\usart.o: ..\Hardware\m2006driver.h
+.\objects\usart.o: ..\USER\FineTune.h
+.\objects\usart.o: ..\USER\include.h
+.\objects\usart.o: E:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\usart.o: ..\Hardware\Motor.h
 .\objects\usart.o: ..\SYSTEM\Move.h
 .\objects\usart.o: ..\Hardware\Encoder.h
